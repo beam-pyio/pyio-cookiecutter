@@ -42,11 +42,11 @@ def test_cookiecutter_all_options(
     base_command, open_source_license, include_github_actions
 ):
     params = f' open_source_license="{open_source_license}" include_github_actions={include_github_actions}'
-    path = Path(base_command[1]).joinpath("mypkg")
+    path = Path(base_command[1]).joinpath(options["package_name"])
     result = subprocess.run(base_command[0] + params, shell=True)
     assert result.returncode == 0
     assert num_items(path, ["tests"]) == 1
-    assert num_items(path, ["src/mypkg"]) == 2
+    assert num_items(path, [f"src/{options['package_name']}"]) == 2
     assert num_items(path, ["docs"]) == 7
     print(f"Checking pair: {open_source_license}, {include_github_actions}")
     if open_source_license == "None":

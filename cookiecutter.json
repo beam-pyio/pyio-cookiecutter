@@ -1,10 +1,10 @@
 {
-  "author_name": "Monty Python",
-  "package_name": "mypkg",
+  "author_name": "Apache Beam Python I/O Connectors",
+  "package_name": "pyio",
   "__package_slug": "{{ cookiecutter.package_name|lower|replace(' ', '_')|replace('-', '_') }}",
   "package_short_description": "A package for creating an Apache Beam Python I/O connector",
   "package_version": "0.1.0",
-  "python_version": "3.10",
+  "python_version": "3.8",
   "open_source_license": [
     "MIT",
     "Apache License 2.0",
