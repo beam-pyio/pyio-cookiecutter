@@ -1,0 +1,53 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]  # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  release:
+    permissions:
+      id-token: write
+      contents: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "{{ cookiecutter.python_version }}"
+
+      - name: Do Stuff
+        run: |
+          echo "Do Stuff"
+
+      # - name: Publish to TestPyPI
+      #   uses: pypa/gh-action-pypi-publish@release/v1
+      #   if: steps.release.outputs.released == 'true'
+      #   with:
+      #     repository-url: https://test.pypi.org/legacy/
+      #     password: {% raw %}${{ secrets.TEST_PYPI_API_TOKEN }}{% endraw %}
+
+      # - name: Test install from TestPyPI
+      #   if: steps.release.outputs.released == 'true'
+      #   run: |
+      #       pip install \
+      #       --index-url https://test.pypi.org/simple/ \
+      #       --extra-index-url https://pypi.org/simple \
+      #       {{ cookiecutter.__package_slug }}
+
+      # - name: Publish to PyPI
+      #   uses: pypa/gh-action-pypi-publish@release/v1
+      #   if: steps.release.outputs.released == 'true'
+      #   with:
+      #     password: {% raw %}${{ secrets.PYPI_API_TOKEN }}{% endraw %}
+
+      # - name: Publish package distributions to GitHub Releases
+      #   uses: python-semantic-release/upload-to-gh-release@main
+      #   if: steps.release.outputs.released == 'true'
+      #   with:
+      #     github_token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}

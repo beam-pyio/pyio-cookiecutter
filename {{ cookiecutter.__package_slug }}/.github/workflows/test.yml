@@ -25,10 +25,16 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+      - name: Install poetry
+        uses: snok/install-poetry@v1
 
-      - name: Pytest tests
-        run: |
-          pytest tests/
+      - name: Install package
+        run: poetry install
+
+      - name: Test with pytest
+        run: poetry run pytest tests/ --cov={{ cookiecutter.__package_slug }} --cov-report=xml
+
+      - name: Use Codecov to track coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.xml   # coverage report
