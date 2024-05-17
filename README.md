@@ -1,9 +1,10 @@
 # Apache Beam Python I/O Cookiecutter
 
-![tests](https://github.com/py-pkgs/pyio-cookiecutter/workflows/test/badge.svg)
-[![release](https://img.shields.io/github/release/py-pkgs/pyio-cookiecutter.svg)](https://github.com/py-pkgs/pyio-cookiecutter/releases)
-[![python](https://img.shields.io/badge/python-%5E3.8-blue)]()
-[![os](https://img.shields.io/badge/OS-Ubuntu%2C%20Mac%2C%20Windows-purple)]()
+![doc](https://github.com/beam-pyio/pyio-cookiecutter/workflows/document/badge.svg)
+![test](https://github.com/beam-pyio/pyio-cookiecutter/workflows/test/badge.svg)
+[![release](https://img.shields.io/github/release/beam-pyio/pyio-cookiecutter.svg)](https://github.com/beam-pyio/pyio-cookiecutter/releases)
+[![python](https://img.shields.io/badge/python-3.8%2C%203.9%2C%203.10%2C%203.11-blue)]()
+[![os](https://img.shields.io/badge/OS-Ubuntu%2C%20Mac-purple)]()
 
 <p align="center">
   <img src="docs/source/_static/logo.png" width="220" alt="pyio-cookiecutter logo">
