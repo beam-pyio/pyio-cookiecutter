@@ -1,6 +1,6 @@
 # Apache Beam Python I/O Cookiecutter
 
-![doc](https://github.com/beam-pyio/pyio-cookiecutter/workflows/document/badge.svg)
+![doc](https://github.com/beam-pyio/pyio-cookiecutter/workflows/doc/badge.svg)
 ![test](https://github.com/beam-pyio/pyio-cookiecutter/workflows/test/badge.svg)
 [![release](https://img.shields.io/github/release/beam-pyio/pyio-cookiecutter.svg)](https://github.com/beam-pyio/pyio-cookiecutter/releases)
 [![python](https://img.shields.io/badge/python-3.8%2C%203.9%2C%203.10%2C%203.11-blue)]()
