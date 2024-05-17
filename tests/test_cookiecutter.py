@@ -1,6 +1,5 @@
 import json
 import subprocess
-from itertools import product
 from pathlib import Path
 
 from pytest import (
@@ -33,31 +32,20 @@ def test_cookiecutter_default_options(base_command):
 with open("cookiecutter.json") as f:
     options = json.load(f)
 
-combinations = list(
-    product(options["open_source_license"], options["include_github_actions"])
-)
 
-@mark.parametrize("open_source_license,include_github_actions", combinations)
+@mark.parametrize("open_source_license", options["open_source_license"])
 def test_cookiecutter_all_options(
-    base_command, open_source_license, include_github_actions
+    base_command, open_source_license
 ):
-    params = f' open_source_license="{open_source_license}" include_github_actions={include_github_actions}'
+    params = f' open_source_license="{open_source_license}"'
     path = Path(base_command[1]).joinpath(options["package_name"])
     result = subprocess.run(base_command[0] + params, shell=True)
     assert result.returncode == 0
     assert num_items(path, ["tests"]) == 1
     assert num_items(path, [f"src/{options['package_name']}"]) == 2
     assert num_items(path, ["docs"]) == 7
-    print(f"Checking pair: {open_source_license}, {include_github_actions}")
+    assert num_items(path, [".github", "workflows"]) == 3
     if open_source_license == "None":
-        if include_github_actions in ["ci", "ci+cd"]:
-            assert num_items(path, [".github", "workflows"]) == 1
-            assert num_items(path) == 11
-        else:
-            assert num_items(path) == 10
+        assert num_items(path) == 11
     else:
-        if include_github_actions in ["ci", "ci+cd"]:
-            assert num_items(path, [".github", "workflows"]) == 1
-            assert num_items(path) == 12
-        else:
-            assert num_items(path) == 11
+        assert num_items(path) == 12
