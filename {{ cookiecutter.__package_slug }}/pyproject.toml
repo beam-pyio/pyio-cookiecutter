@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "{{ cookiecutter.__package_slug }}"
+version = "{{ cookiecutter.package_version }}"
+description = "{{ cookiecutter.package_short_description }}"
+authors = ["{{ cookiecutter.author_name }}"]
+license = "{{ cookiecutter.open_source_license }}"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8, <=3.11"
+
+[tool.poetry.dev-dependencies]
+{% if cookiecutter.include_github_actions == 'ci+cd' -%}
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:tool.poetry.version",
+]                                                    # version location
+branch = "main"                                      # branch to make releases of
+changelog_file = "CHANGELOG.md"                      # changelog file
+build_command = "pip install poetry && poetry build" # build dists 
+{% endif %}
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
