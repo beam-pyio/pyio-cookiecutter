@@ -37,3 +37,4 @@ def setup(app):
 html_static_path = ["_static"]
 html_theme = "sphinx_rtd_theme"
 html_logo = "_static/logo.png"
+html_favicon = "_static/favicon.ico"

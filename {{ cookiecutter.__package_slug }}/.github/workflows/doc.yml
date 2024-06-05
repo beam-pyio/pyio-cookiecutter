@@ -23,7 +23,7 @@ jobs:
       url: {% raw %}${{ steps.deployment.outputs.page_url }}{% endraw %}
 
     runs-on: ubuntu-latest
-
+    if: {% raw %}${{ github.event.workflow_run.conclusion == 'success' }}{% endraw %}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
