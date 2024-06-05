@@ -35,30 +35,29 @@ Please see the [documentation](https://beam-pyio.github.io/pyio-cookiecutter/) f
     ```text
     pkg
     ├── .github                    ┐
-    │   └── workflows              │ GitHub Actions workflow
-    │       └── ci-cd.yml          ┘
+    │   └── workflows              │
+    │       ├── doc.yml            │ GitHub Actions workflow
+    │       ├── release.yml        │
+    │       └── test.yml           ┘
     ├── .gitignore                 ┐
-    ├── .readthedocs.yml           │
     ├── CHANGELOG.md               │
     ├── CONDUCT.md                 │
     ├── CONTRIBUTING.md            │
-    ├── docs                       │
-    │   ├── make.bat               │
-    │   ├── Makefile               │
-    │   ├── requirements.txt       │
-    │   ├── changelog.md           │
-    │   ├── conduct.md             │
-    │   ├── conf.py                │ Package documentation
-    │   ├── contributing.md        │
-    │   ├── index.md               │
-    │   └── usage.ipynb            │
     ├── LICENSE                    │
     ├── README.md                  ┘
+    ├── docs                       ┐
+    │   ├── Makefile               │
+    │   ├── changelog.md           │
+    │   ├── conduct.md             │ Package documentation
+    │   ├── conf.py                │
+    │   ├── contributing.md        │
+    │   ├── index.md               │
+    │   └── requirements.txt       ┘
     ├── pyproject.toml             ┐ 
     ├── src                        │
-    │   └── pkg                    │ Package source code, metadata,
-    │       ├── __init__.py        │ and build instructions 
-    │       └── pkg.py             ┘
+    │   └── pkg                    │ Package source code, metadata,
+    │       ├── __init__.py        │ and build instructions 
+    │       └── pkg.py             ┘
     └── tests                      ┐
         └── test_pkg.py            ┘ Package tests
     ```
