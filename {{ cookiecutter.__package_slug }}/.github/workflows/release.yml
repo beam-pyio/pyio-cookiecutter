@@ -14,16 +14,13 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+        uses: ghalactic/github-release-from-tag@v5
         with:
-          tag_name: {% raw %}${{ github.ref }}{% endraw %}
-          release_name: Release {% raw %}${{ github.ref }}{% endraw %}
-          draft: true
+          prerelease: "false"
+          draft: "true"
 
       - name: Set up Python
         uses: actions/setup-python@v1
@@ -31,10 +28,9 @@ jobs:
           python-version: "{{ cookiecutter.python_version }}"
 
       - name: Publish to TestPyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository-url: https://test.pypi.org/legacy/
-          password: {% raw %}${{ secrets.TEST_PYPI_API_TOKEN }}{% endraw %}
+        run: |
+          poetry config repositories.test-pypi https://test.pypi.org/legacy/
+          poetry publish --build -r test-pypi -u __token__ -p {% raw %}${{ secrets.TEST_PYPI_API_TOKEN }}{% endraw %}
 
       - name: Test install from TestPyPI
         run: |
@@ -44,6 +40,5 @@ jobs:
             {{ cookiecutter.__package_slug }}
 
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: {% raw %}${{ secrets.PYPI_API_TOKEN }}{% endraw %}
+        run: |
+          poetry publish --build -u __token__ -p {% raw %}${{ secrets.PYPI_API_TOKEN }}{% endraw %}
