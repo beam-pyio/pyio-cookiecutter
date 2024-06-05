@@ -43,7 +43,7 @@ def test_cookiecutter_all_options(
     assert result.returncode == 0
     assert num_items(path, ["tests"]) == 1
     assert num_items(path, [f"src/{options['package_name']}"]) == 2
-    assert num_items(path, ["docs"]) == 7
+    assert num_items(path, ["docs"]) == 8
     assert num_items(path, [".github", "workflows"]) == 3
     if open_source_license == "None":
         assert num_items(path) == 10
