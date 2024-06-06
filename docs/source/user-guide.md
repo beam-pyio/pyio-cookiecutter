@@ -41,14 +41,14 @@ This section provides a high-level walk through of building an Apache Beam Pytho
 5. Write tests for your package in module(s) prefixed with *`test_`* in the *`tests/`* directory. Add `pytest` and `pytest-cov` as development dependencies and calculate the coverage of your tests.
 
     ```{prompt} bash
-    poetry add --dev pytest pytest-cov
+    poetry add --group dev pytest pytest-cov
     pytest tests/ --cov=<pkg-name>
     ```
 
-6. Create documentation for your package. Add the necessary development dependencies listed below and then compile and render documentation to HTML. Note that the *myst-nb* package doesn't support Python 3.8 and use a higher version to build documentation.
+6. Create documentation for your package. Add the necessary development dependencies listed below and then compile and render documentation to HTML. As the *myst-nb* package doesn't support Python 3.8, it is not installed via *poetry* but by *pip* directly.
 
     ```{prompt} bash
-    poetry add --dev myst-nb sphinx-autoapi sphinx-rtd-theme
+    pip install -r docs/requirements.txt
     make html --directory docs/
     python -m http.server -d docs/_build/html/ 8000 # serve on port 8000
     ```
