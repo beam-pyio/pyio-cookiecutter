@@ -45,7 +45,7 @@ This section provides a high-level walk through of building an Apache Beam Pytho
     pytest tests/ --cov=<pkg-name>
     ```
 
-6. Create documentation for your package. Add the necessary development dependencies listed below and then compile and render documentation to HTML. As the *myst-nb* package doesn't support Python 3.8, it is not installed via *poetry* but by *pip* directly.
+6. (*OPTIONAL*) Create documentation for your package. Add the necessary development dependencies listed below and then compile and render documentation to HTML. As the *myst-nb* package doesn't support Python 3.8, it is not installed via *poetry* but by *pip* directly.
 
     ```{prompt} bash
     pip install -r docs/requirements.txt
