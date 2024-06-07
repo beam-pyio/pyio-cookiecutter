@@ -4,10 +4,11 @@ This section provides a high-level walk through of building an Apache Beam Pytho
 
 ## Prerequisites
 
-1. Install [`cookiecutter`](https://cookiecutter.readthedocs.io/en/1.7.2/) and [`poetry`](https://python-poetry.org/) using `pip`:
+1. Install [`cookiecutter`](https://cookiecutter.readthedocs.io/en/1.7.2/) and [`poetry`](https://python-poetry.org/) using [`pipx`](https://github.com/pypa/pipx):
 
     ```{prompt} bash
-    pip install cookiecutter poetry
+    pipx install cookiecutter
+    pipx install poetry
     ```
 
 ## Development workflow
