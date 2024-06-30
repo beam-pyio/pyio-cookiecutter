@@ -1,16 +1,16 @@
 import sys
 
-from pkg_resources import (
-    get_distribution,
-    packaging,
-)
-
 MIN_CC_VERSION = "2.0.0"
 
+try:
+    import cookiecutter # type: ignore
+except ImportError:
+    print(f"ERROR: please install cookiecutter >= {MIN_CC_VERSION}")
+    sys.exit(1)
+
+cc_version = cookiecutter.__version__
 # assert cookiecutter >= 2.0.0
-cc_version = packaging.version.parse(get_distribution("cookiecutter").version)
-min_version = packaging.version.parse(MIN_CC_VERSION)
-if cc_version < min_version:
+if cc_version < MIN_CC_VERSION:
     print(
         f"ERROR: please install cookiecutter >= {MIN_CC_VERSION} (current "
         f"version is {cc_version}):\n"

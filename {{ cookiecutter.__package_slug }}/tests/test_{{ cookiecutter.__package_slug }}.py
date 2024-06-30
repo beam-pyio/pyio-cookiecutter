@@ -1,4 +1,4 @@
-from {{ cookiecutter.__package_slug }} import {{ cookiecutter.__package_slug }}
+from {{ cookiecutter.__package_slug }}.io import my_fn
 
 def test_my_fn():
-    assert {{ cookiecutter.__package_slug }}.my_fn() == 1
+    assert my_fn() == 1
