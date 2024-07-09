@@ -33,7 +33,6 @@ To learn more, checkout the sections below.
 .. container:: button
 
    :doc:`Quick Start <quickstart>` :doc:`User Guide <user-guide>`
-   `Python Packages Book <https://py-pkgs.org/>`_ :doc:`Contributing Guidelines <contributing>`
 ```
 
 ## Acknowledgements
