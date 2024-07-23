@@ -24,7 +24,7 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 
 ## License
 
-`{{ cookiecutter.__package_slug }}` was created by {{ cookiecutter.author_name }}. {% if cookiecutter.open_source_license != 'None' -%}It is licensed under the terms of the {{ cookiecutter.open_source_license }} license.{% else %}{{ cookiecutter.author_name }} retains all rights to the source and it may not be reproduced, distributed, or used to create derivative works.{% endif %}
+`{{ cookiecutter.__package_slug }}` was created as part of the [Apache Beam Python I/O Connectors](https://github.com/beam-pyio) project. It is licensed under the terms of the {{ cookiecutter.open_source_license }} license.
 
 ## Credits
 
