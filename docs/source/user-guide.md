@@ -85,13 +85,14 @@ Create an empty public repository on GitHub. The repository name should match to
 :align: center
 ```
 
-As the document is published via GitHub Workflows (`.github/workflows/doc.yml`), GitHub Pages should be enabled where the build and deploy source is set to *GitHub Actions*.
+As the document is published via GitHub Workflows (`.github/workflows/doc.yml`), GitHub Pages should be enabled where it is configured to be built from the `gh-pages` branch. Note that the dedicated branch does not exist by default, and it is not possible to enable GitHub Pages until the branch is created. Note that it can be created either manually or by the `deploy_workflow` job of the `doc` workflow.
 
 ```{image} _static/github-pages.png
 :alt: github-pages-config
 :width: 600px
 :align: center
 ```
+
 
 ## Continuous integration and continuous deployment
 
@@ -104,8 +105,8 @@ There are three workflows in the `.github/workflows` folder.
 └── test.yml
 ```
 
-The *test* workflow performs unit testing with all the supported Python versions, and it gets triggered on a push or pull request event to the *main* branch.
+The *test* workflow performs unit testing with all the supported Python versions, and it gets triggered on a pull request event to the *main* branch.
 
-The *doc* workflow gets triggered when the *test* workflow completes. The package document is built and published to GitHub Pages only if the upstream workflow is succeeded.
+The *doc* workflow gets triggered when there is a push event to the *main* branch. The package document is built and published on GitHub Pages.
 
 The *release* workflow is for creating a release and publish it to the Python Package Index (PyPI). It gets triggered when a tag whose name begins with *v* is pushed. Currently, only a draft release is created, and it is expected to finalize manually. Note the API token that is used to publish a package is stored in the organization secrets.
